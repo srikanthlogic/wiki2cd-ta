@@ -171,6 +171,7 @@ def grab_page(wikibase, pagelink,outputfolder, pagenum):
         metacontent = metacontent.replace("$ONWIKI$",link)
         metacontent = metacontent.replace("$PAGE$",quotedfilename)
         page = page.replace("</body>",metacontent+"</body>")
+        # The next line is where the page cleanup happens. FIXME
         page = cleanup(page)
         f.write(page)
         f.close()
