@@ -1,0 +1,1 @@
+mkdir ../tawiki/content/wikiimages/
