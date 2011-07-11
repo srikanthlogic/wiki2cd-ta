@@ -4,12 +4,27 @@
 <title>தமிழ் விக்கிப்பீடியா - தேர்ந்தெடுக்கப்பட்ட கட்டுரைகள்</title>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <link type="text/css" href="style.css" rel="stylesheet">
+<script type="text/javascript" src="scripts/jquery-1.6.1.min.js"></script>
+
 </head>
 <body>
-<div id="banner">
-
+<div id="bannerdiv">
+<p>qwqewddgsdfkjbdkcjhsdvckhsabcdnswrefefihudsghrgfkyukegrfkwuashgafkeurreiurhgfsakjhg</p>
 </div>
-<div id="toc"></div>
-<div id="content"></div>
+<div id="tocdiv">
+<iframe name="toc" src="toc.html" width="100%" height="100%"></iframe>
+</div>
+<div id="contentdiv">
+<iframe name="content" src="content.html" width="99%" height="100%"></iframe>
+</div>
+<div id="extradiv">
+<iframe name="toc" src="toc.html" width="100%" height="100%"></iframe>
+</div>
+<script type="text/javascript" >
+$('#contentdiv').height($(window).height() - 70);
+$('#tocdiv').height($(window).height() - 70);
+$('#extradiv').height($(window).height() - 70);
+
+</script>
 </body>
 </html>
