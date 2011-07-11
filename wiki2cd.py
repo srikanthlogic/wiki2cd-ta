@@ -141,8 +141,8 @@ def grab_page(wikibase, pagelink,outputfolder, pagenum):
     metacontent ="""
     <hr/>
     <ul>
-    <li><a href="$ONWIKI$" target="_blank" class="metalinks">Read the latest version in wiki</a></li>
-    <li><a href="http://toolserver.org/~daniel/WikiSense/Contributors.php?wikilang=ml&wikifam=.wikipedia.org&since=&until=&grouped=on&order=-edit_count&max=100&order=-edit_count&format=html&page=$PAGE$" target="_blank"  class="metalinks">Contributors</a></li>
+    <li><a href="$ONWIKI$" target="_blank" class="metalinks">விக்கிப்பீடியாவில் அண்மைய பதிப்பை படிக்க</a></li>
+    <li><a href="http://toolserver.org/~daniel/WikiSense/Contributors.php?wikilang=ta&wikifam=.wikipedia.org&since=&until=&grouped=on&order=-edit_count&max=100&order=-edit_count&format=html&page=$PAGE$" target="_blank"  class="metalinks">பங்களிப்பாளர்கள்</a></li>
     <ul>
     """
     path = outputfolder+"/"
@@ -234,7 +234,7 @@ def cleanup(page):
     #If you want to remove any other section, just add the class or id of the section below with comma seperated
     unwanted_sections_list="""
     .editsection,#mw-panel,script,#mw-head,.infobox,#toc,#jump-to-nav,.reference,
-    .navbox,#footer,#catlinks,#mw-js-message,.magnify,#mainarticle"""
+    .navbox,#footer,#catlinks,#mw-js-message,.magnify,#mainarticle,.printfooter,#siteSub """
     unwanted_divs = unwanted_sections_list.split(",")
     for section in unwanted_divs:
         document.remove(section.strip())
@@ -248,5 +248,5 @@ if __name__ == '__main__':
         maketoc(topicslist,outputfolder)
         grab_pages(wikibase,topicslist,outputfolder)
     else:
-        print("Error: Missing arguments. Eg usage: toc_maker.py http://ml.wikipedia.org topics.txt wikiofflinefolder")
+        print("Error: Missing arguments. Eg usage: toc_maker.py http://ta.wikipedia.org topics.txt wikiofflinefolder")
 
