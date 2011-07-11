@@ -13,7 +13,7 @@ def cleanup(page):
     Uses pyquery.
     """
     document = pq(page)
-    #If you want to remove any other section, just add the class or id of the section below with comma seperated
+    #If you want to remove any section, just add the class or id of the section below with comma seperated
     unwanted_sections_list="""
     .editsection,#mw-panel,script,#mw-head,.infobox,#toc,#jump-to-nav,.reference,
     .navbox,#footer,#catlinks"""
