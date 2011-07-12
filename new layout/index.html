@@ -1,30 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ta" lang="ta" dir="ltr">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-loose.dtd">
+<html>
 <head>
-<title>தமிழ் விக்கிப்பீடியா - தேர்ந்தெடுக்கப்பட்ட கட்டுரைகள்</title>
+<title>விக்கிப்பீடியா - சிறப்புக் குறுந்தட்டு</title>
+<link rel="stylesheet" href="styles/landing.css" type="text/css">
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-<link type="text/css" href="style.css" rel="stylesheet">
 <script type="text/javascript" src="scripts/jquery-1.6.1.min.js"></script>
-
 </head>
 <body>
-<div id="bannerdiv">
-<p>qwqewddgsdfkjbdkcjhsdvckhsabcdnswrefefihudsghrgfkyukegrfkwuashgafkeurreiurhgfsakjhg</p>
+<div id="container">
+<div id="header">
+<h1><span>வி</span>க்கிப்பீடி<span>யா</span></h1>
+<div id="logo">
+<img src="images/Wikipedia-logo.png" alt="Wikipedia Logo" />
 </div>
-<div id="tocdiv">
-<iframe name="toc" src="toc.html" width="100%" height="100%"></iframe>
+<h2>கட்டற்ற கலைக்களஞ்சியம்</h2>
 </div>
-<div id="contentdiv">
-<iframe name="content" src="content.html" width="99%" height="100%"></iframe>
+<div id="text">
+<button id="read">Read Articles</button>
+<button>See Credits</button>
+<button>License</button>
+<button>Contact</button>
+
 </div>
-<div id="extradiv">
-<iframe name="toc" src="toc.html" width="100%" height="100%"></iframe>
+<div id="footer">
+<p>Credits: Wikimedia Foundation, Tamil Wikipedia Community</p>
+</div>
 </div>
 <script type="text/javascript" >
-$('#contentdiv').height($(window).height() - 70);
-$('#tocdiv').height($(window).height() - 70);
-$('#extradiv').height($(window).height() - 70);
-
+$(document).ready(function(){
+   $('#container').hide().height($(window).height() - 20).fadeIn(2000);
+   $('#read').click(function(){
+   	$('#container').fadeOut(2000, function(){document.location.replace('reader.html');});
+   	});
+	});
 </script>
 </body>
 </html>

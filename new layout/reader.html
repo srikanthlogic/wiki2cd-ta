@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ta" lang="ta" dir="ltr">
+<head>
+<title>தமிழ் விக்கிப்பீடியா - தேர்ந்தெடுக்கப்பட்ட கட்டுரைகள்</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<link type="text/css" href="styles/style.css" rel="stylesheet">
+<script type="text/javascript" src="scripts/jquery-1.6.1.min.js"></script>
+
+</head>
+<body>
+<div id="bannerdiv" class="trace">
+<img src="images/Wikipedia-logo-ta-70.png" alt="" />
+<h1>விக்கிப்பீடியா சிறப்பு கட்டுரைத்தொகுப்பு</h1>
+</div>
+<div id="mode">
+<p>கட்டுரை மட்டும்</p>
+</div>
+<div id="tocdiv" class="trace">
+<iframe name="toc" src="toc.html" width="100%" height="100%"></iframe>
+</div>
+<div id="contentdiv">
+<iframe name="content" src="content.html" width="99%" height="100%"></iframe>
+</div>
+<div id="extradiv" class="trace">
+<iframe name="toc" src="toc.html" width="100%" height="100%"></iframe>
+</div>
+<script type="text/javascript" >
+$('#contentdiv').height($(window).height() - 71);
+$('#tocdiv').height($(window).height() - 71);
+$('#extradiv').height($(window).height() - 71);
+var fscreen = false;
+$('#mode').click(function(){
+	$('.trace').toggle();
+	if(!fscreen){
+		$('#contentdiv').animate({'height' : '100%'}, 'fast');
+		fscreen = true;
+		}else{	
+			$('#contentdiv').animate({'height' : $(window).height()-71}, 'fast');
+			fscreen = false;
+			} 
+});
+</script>
+</body>
+</html>
