@@ -15,20 +15,53 @@
 </div>
 <h2>கட்டற்ற கலைக்களஞ்சியம்</h2>
 </div>
-<div id="text">
-<button id="read">Read Articles</button>
-<button>See Credits</button>
-<button>License</button>
-<button>Contact</button>
+<div id="circle">
+<ul>
+	<li class="spin disc-1">
+	<h3>விக்கிப்பீடியா குறுந்தட்டு</h3>
+	<ul>
+		<li><a href="" >இந்த குறுந்தட்டைப் பற்றி</a></li>
+		<li><a href="" >நன்றிகள்</li>
+		<li><a href="" >விக்கிப்பீடியா - வினாவிடை</a></li>
+	</ul>
+	</li>
+	<li class="spin disc-2">
+	<h3>தமிழ் கணிமை மென்பொருட்கள்</h3>
+	<ul>
+		<li><a href="" > சுரதா</a></li>
+		<li><a href="" >என்.எச்.எம் ரைட்டர்</a></li>
+		<li><a href="" >எழுத்துருக்கள்</a></li>
+	</ul>		
+	</li>
+	<li class="spin disc-3">
+	<h3>பிற விக்கித்திட்டங்கள்</h3>
+	<ul>
+		<li><a href="" >விக்கிப்பீடியா</a></li>
+		<li><a href="" >விக்கிமூலம்</a></li>
+		<li><a href="" >விக்சனரி</a></li>
+		<li><a href="" >விக்கி நூல்கள்</a></li>	
+	</ul> 	
+	</li>
+	<li class="spin disc-4">
+		<h3>வெளி இணைப்புகள்</h3>
+		<ul>
+			<li><a href="" >ஆங்கில விக்கிப்பீடியா</a></li>		
+		</ul>
+	</li>
+</ul>
 
 </div>
+
+<div id="text">
+<button id="read">கட்டுரைத் தொகுப்பு</button>
+</div>
 <div id="footer">
-<p>Credits: Wikimedia Foundation, Tamil Wikipedia Community</p>
+<p>--------- Credit (or) &copy; Copyright here ----------</p>
 </div>
 </div>
 <script type="text/javascript" >
 $(document).ready(function(){
-   $('#container').hide().height($(window).height() - 20).fadeIn(2000);
+   $('#container').hide().height($(window).height() - 130).fadeIn(2000);
    $('#read').click(function(){
    	$('#container').fadeOut(2000, function(){document.location.replace('reader.html');});
    	});

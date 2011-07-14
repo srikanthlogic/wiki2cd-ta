@@ -14,6 +14,7 @@
 </div>
 <div id="mode">
 <p>கட்டுரை மட்டும்</p>
+<p style="display: none;">அனைத்தும்</p>
 </div>
 <div id="tocdiv" class="trace">
 <iframe name="toc" src="toc.html" width="100%" height="100%"></iframe>
@@ -30,6 +31,7 @@ $('#tocdiv').height($(window).height() - 71);
 $('#extradiv').height($(window).height() - 71);
 var fscreen = false;
 $('#mode').click(function(){
+	$('#mode p').toggle(); 
 	$('.trace').toggle();
 	if(!fscreen){
 		$('#contentdiv').animate({'height' : '100%'}, 'fast');
