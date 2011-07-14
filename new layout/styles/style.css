@@ -7,7 +7,6 @@ body{
 	}
 #bannerdiv{
 	width: 100%;
-	height: 100px;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -15,17 +14,15 @@ body{
 	background-image: url('../images/header.png');
 	background-repeat: repeat-x;
 }
-#bannerdiv img{
-	float: left;
-	margin-left: 200px;
-	}
 #bannerdiv h1{
-	float: left;
-	padding-top: 1.8%;
-	margin-left: 8%;
 	text-shadow: 2px 2px 1px #FFF;
-	font-size: 25px;
+	font-size: 20px;
 	color: #333;
+	background-image: url('../images/Wikipedia-logo-48.png');
+	background-repeat: no-repeat;
+	background-position: ;
+	padding-top: 15px;
+	padding-bottom: 10px;
 	}
 #tocdiv{
 	width: 16%;
@@ -50,6 +47,7 @@ body{
 	margin: 0;
 	text-shadow: 1px 1px 1px #EEE;
 	padding-left: 20px;
+	padding-top: 2px;
 	background-image: url('../images/book.png');
 	background-repeat: no-repeat;
 	font-size: 10px;
