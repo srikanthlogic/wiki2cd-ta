@@ -16,8 +16,8 @@ def maketoc(topicslist,outputfolder, toc_filename="/toc.html"):
     toc_file = codecs.open(outputfolder + toc_filename, "w", "utf-8")
     toc_cdfix_file = codecs.open("toc_cd_fix.sh","w","utf-8")
     fp = codecs.open(topicslist, "r", "utf-8")
-    toc_header=codecs.open("templates2/toc_header.html", "r", "utf-8").read()
-    toc_footer = codecs.open("templates2/toc_footer.html", "r", "utf-8").read()
+    toc_header=codecs.open("templates/toc_header.html", "r", "utf-8").read()
+    toc_footer = codecs.open("templates/toc_footer.html", "r", "utf-8").read()
     toc_file.write(toc_header)
     index = 0
     currentlevel = 0
@@ -80,4 +80,4 @@ def ensure_dir(f):
 
 
 if __name__ == "__main__":
-    maketoc("sampletopics.txt","new layout")
+    maketoc("sample_topicslist.txt","content")

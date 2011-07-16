@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ta" lang="ta" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="scripts/jquery-1.6.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('li:has(ul)').css({cursor:'pointer'}).children().filter(':not(span)').hide();
+	
+	$('li:has(ul) span').click( function(){
+		$(this).parent().toggleClass('open').children().filter(':not(span)').slideToggle();
+		});
+	
+	$('span.file').parent().addClass('file');
+});
+</script>
+<style type="text/css">
+ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	}
+li{
+padding-left: 15px;
+background-repeat: no-repeat;
+background-position: 0px 3px;
+}
+li.closed{
+	background-image: url('images/right.png');
+}
+li.open{
+	background-image: url('images/down.png');
+}
+li.file{
+background-image: url('images/article.png');
+}
+</style>
+</head>
+<body>
+<h2>கட்டுரைகள்</h2>
+<ul id="toctree" class="filetree">
+<li class='closed'><span class='folder'>Art</span>
+<ul>
+<li><span class='file'><a href='Mona_Lisa.html' target='content'>Mona Lisa</a></span></li>
+<li><span class='file'><a href='Jewellery.html' target='content'>Jewellery</a></span></li>
+<li><span class='file'><a href='Painting.html' target='content'>Painting</a></span></li>
+<li><span class='file'><a href='Sculpture.html' target='content'>Sculpture</a></span></li>
+<li class='closed'><span class='folder'>Artists</span>
+<ul>
+<li><span class='file'><a href='Felice_Beato.html' target='content'>Felice Beato</a></span></li>
+<li><span class='file'><a href='Matthew_Brettingham.html' target='content'>Matthew Brettingham</a></span></li>
+<li><span class='file'><a href='Canaletto.html' target='content'>Canaletto</a></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class='closed'><span class='folder'>Music</span>
+<ul>
+<li class='closed'><span class='folder'>Genres, styles and eras</span>
+<ul>
+<li><span class='file'><a href='Gregorian_chant.html' target='content'>Gregorian chant</a></span></li>
+<li><span class='file'><a href='Music.html' target='content'>Music</a></span></li>
+<li><span class='file'><a href='Salsa_music.html' target='content'>Salsa music</a></span></li>
+<li class='closed'><span class='folder'>Performers</span>
+<ul>
+<li><span class='file'><a href='Beethoven.html' target='content'>Beethoven</a></span></li>
+<li><span class='file'><a href='Mozart.html' target='content'>Mozart</a></span></li>
+<li><span class='file'><a href='Giuseppe_Verdi.html' target='content'>Giuseppe Verdi</a></span></li>
+</li>
+</ui>
+ 
+<script type="text/javascript">
+    function findValue(li) {
+        if( li == null ) return alert("No match!");
+
+        // if coming from an AJAX call, let's use the CityId as the value
+        if( !!li.extra ) var sValue = li.extra[0];
+
+        // otherwise, let's just display the value in the text box
+        else var sValue = li.selectValue;
+        var targetlink="#"
+        $("a").each(function() { 
+            if(sValue==$(this).html()){
+                targetlink=this.href;
+            }    
+        });
+        parent.content.location.href = targetlink;
+    }
+
+    function selectItem(li) {
+        findValue(li);
+    }
+
+    function formatItem(row) {
+        return row[0] + " (id: " + row[1] + ")";
+    }
+    function lookupLocal(){
+        var oSuggest = $("#topicsearch")[0].autocompleter;
+
+        oSuggest.findValue();
+
+        return false;
+    }
+
+    $(document).ready(function() {
+        var optionTexts = [];
+        $("a").each(function() { optionTexts.push($(this).html()) });
+        $("#topicsearch").autocompleteArray(
+            optionTexts        ,
+            {
+                delay:10,
+                minChars:1,
+                matchSubset:1,
+                onItemSelect:selectItem,
+                onFindValue:findValue,
+                autoFill:false,
+                maxItemsToShow:10
+            }
+        );
+    });
+</script>
+</body>
+</html>
+   
+
