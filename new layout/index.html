@@ -5,9 +5,13 @@
 <link rel="stylesheet" href="styles/landing.css" type="text/css">
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <script type="text/javascript" src="scripts/jquery-1.6.1.min.js"></script>
+
+<script type="text/javascript" src="scripts/typeface-0.15.js"></script>
+<script type="text/javascript" src="scripts/gist-tmotkalyani_bolditalic.typeface.js"></script>
+
 </head>
 <body>
-<div id="container">
+<div id="container" class="typeface-js" style="font-family: gist-tmotnambi_normal;">
 <div id="header">
 <h1><span>வி</span>க்கிப்பீடி<span>யா</span></h1>
 <div id="logo">
@@ -63,7 +67,7 @@
 $(document).ready(function(){
    $('#container').hide().height($(window).height() - 130).fadeIn(2000);
    $('#read').click(function(){
-   	$('#container').fadeOut(2000, function(){document.location.replace('reader.html');});
+   	 window.location = 'reader.html';
    	});
 	});
 </script>
