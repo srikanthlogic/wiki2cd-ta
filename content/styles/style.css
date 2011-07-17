@@ -63,9 +63,6 @@ body{
 	border-left: 1px solid #CCC;
 	border-right: 1px solid #CCC;	
 }
-#contentdiv a{
-	text-decoration: none;
-	}
 #extradiv{
 	width: 18%;
 	float: left;;
