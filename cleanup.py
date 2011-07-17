@@ -16,7 +16,8 @@ def cleanup(page):
     #If you want to remove any section, just add the class or id of the section below with comma seperated
     unwanted_sections_list="""
     .editsection,#mw-panel,script,#mw-head,.infobox,#toc,#jump-to-nav,.reference,
-    .navbox,#footer,#catlinks,mw-js-message,.magnify,#mainarticle"""
+    .navbox,#footer,#catlinks,mw-js-message,.magnify,#mainarticle,
+    #protected-icon,.dablink"""
     unwanted_divs = unwanted_sections_list.split(",")
     for section in unwanted_divs:
         document.remove(section.strip())
