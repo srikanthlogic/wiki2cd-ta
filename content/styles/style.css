@@ -74,3 +74,17 @@ body{
 iframe{
 	border: 0;
 	}
+#homebtn{
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+#homebtn span{
+	font-size: 16px;
+	margin-left: 3px;
+	}
+#homebtn img{
+	float: left;	
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
