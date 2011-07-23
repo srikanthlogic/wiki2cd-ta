@@ -14,14 +14,14 @@
 <button id="homebtn" onclick="window.location = '../index.html';"><img src="images/home.png" alt="முகப்பு" ><span>முகப்பு</span></button>
 </div>
 </div>
-<div id="mode">
-<p>கட்டுரை மட்டும்</p>
-<p style="display: none;">அனைத்தும்</p>
-</div>
 <div id="tocdiv" class="trace">
 <iframe name="toc" src="toc.html" width="100%" height="100%"></iframe>
 </div>
 <div id="contentdiv">
+<div id="mode">
+<img src="images/close_left.png" alt="" >
+<img src="images/close_right.png" alt="" style="display:none" >
+</div>
 <iframe name="content" src="content.html" width="100%" height="100%"></iframe>
 </div>
 <div id="extradiv" class="trace">
@@ -31,15 +31,18 @@
 $('#contentdiv').height($(window).height() - 51);
 $('#tocdiv').height($(window).height() - 51);
 $('#extradiv').height($(window).height() - 51);
+
+$('#mode').height($('#contentdiv').height());
+$('#mode img').css("margin-top",$('#contentdiv').height()/2);
+
 var fscreen = false;
 $('#mode').click(function(){
-	$('#mode p').toggle(); 
-	$('.trace').toggle();
+	$('#mode img').toggle();
 	if(!fscreen){
-		$('#contentdiv').animate({'height' : '100%'}, 'fast');
+		$('#contentdiv').animate({'width' : '82%', 'left' : '0'}, 'fast');
 		fscreen = true;
 		}else{	
-			$('#contentdiv').animate({'height' : $(window).height()-51}, 'fast');
+			$('#contentdiv').animate({'width' : '65.9%', 'left' : '16%'}, 'fast');
 			fscreen = false;
 			} 
 });

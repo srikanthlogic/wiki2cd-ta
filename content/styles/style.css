@@ -33,26 +33,14 @@ body{
 	background-color: #FFF;	
 }
 #mode{
-	width: 100px;
-	height: 20px;
+	width: 5px;
 	position: absolute;
-	right: 0px;
+	left: 0px;
 	bottom: 0px;
-	border: 1px solid #999;
 	background-color: #ffe380;
-	padding: 3px 0px 0px 5px;
 	z-index: 999;
 	}
-#mode p{
-	margin: 0;
-	text-shadow: 1px 1px 1px #EEE;
-	padding-left: 20px;
-	padding-top: 2px;
-	background-image: url('../images/book.png');
-	background-repeat: no-repeat;
-	font-size: 10px;
-	cursor: pointer;
-	} 
+
 #contentdiv{
 	width: 65.9%;
 	float: left;
@@ -61,7 +49,8 @@ body{
 	left: 16%;
 	background-color: #FFF;
 	border-left: 1px solid #CCC;
-	border-right: 1px solid #CCC;	
+	border-right: 1px solid #CCC;
+	z-index: 900;
 }
 #extradiv{
 	width: 18%;
