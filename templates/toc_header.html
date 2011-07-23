@@ -8,7 +8,7 @@ $(document).ready(function(){
 	$('li:has(ul)').css({cursor:'pointer'}).children().filter(':not(span)').hide();
 	
 	$('li:has(ul) span').click( function(){
-		$(this).parent().toggleClass('open').children().filter(':not(span)').slideToggle();
+		$(this).toggleClass('open').parent().children().filter(':not(span)').slideToggle();
 		});
 	
 	$('span.file').parent().addClass('file');
@@ -22,18 +22,31 @@ ul{
 	font-size: 12px;
 	}
 li{
-padding-left: 15px;
 background-repeat: no-repeat;
 background-position: 0px 3px;
 }
-li.closed{
-	background-image: url('images/right.png');
-}
-li.open{
-	background-image: url('images/down.png');
-}
 li.file{
 background-image: url('images/article.png');
+}
+span{
+	padding-left: 15px;
+	background-repeat: no-repeat;
+	background-position: 0px 3px;
+}
+span.folder{
+	background-image: url('images/right.png');
+}
+span.file{
+	background-image: url('images/article.png');
+	}
+span.open{
+	background-image: url('images/down.png');
+}
+ul{
+	padding-left: 15px;
+}
+ul#toctree{
+	padding-left: 0px;
 }
 </style>
 </head>
