@@ -18,11 +18,15 @@
 <iframe name="toc" src="toc.html" width="100%" height="100%"></iframe>
 </div>
 <div id="contentdiv">
-<div id="mode">
+<div id="leftptr">
 <img src="images/close_left.png" alt="" >
 <img src="images/close_right.png" alt="" style="display:none" >
 </div>
-<iframe name="content" src="content.html" width="100%" height="100%"></iframe>
+<iframe name="content" src="content.html" width="99%" height="100%" style="margin-left: 5px"></iframe>
+<div id="rightptr">
+<img src="images/close_left.png" alt="" style="display:none" >
+<img src="images/close_right.png" alt="" >
+</div>
 </div>
 <div id="extradiv" class="trace">
 <iframe name="wid" src="widgets.html" width="100%" height="100%"></iframe>
@@ -32,20 +36,38 @@ $('#contentdiv').height($(window).height() - 51);
 $('#tocdiv').height($(window).height() - 51);
 $('#extradiv').height($(window).height() - 51);
 
-$('#mode').height($('#contentdiv').height());
-$('#mode img').css("margin-top",$('#contentdiv').height()/2);
+$('#leftptr,#rightptr').height($('#contentdiv').height());
+$('#leftptr img,#rightptr img').css("margin-top",$('#contentdiv').height()/2);
 
-var fscreen = false;
-$('#mode').click(function(){
-	$('#mode img').toggle();
-	if(!fscreen){
-		$('#contentdiv').animate({'width' : '82%', 'left' : '0'}, 'fast');
-		fscreen = true;
+var lhide = false;
+var rhide = false;
+
+$('#leftptr').click(function(){
+	$('#leftptr img').toggle();
+	if(!lhide){
+		$('#contentdiv').animate({'width' : $('#contentdiv').width()+$('#tocdiv').width(), 'left' : '0'}, 'fast');
+		lhide = true;
 		}else{	
-			$('#contentdiv').animate({'width' : '65.9%', 'left' : '16%'}, 'fast');
-			fscreen = false;
+			$('#contentdiv').animate({'width' : $('#contentdiv').width()-$('#tocdiv').width(), 'left' : '16%'}, 'fast');
+			lhide = false;
 			} 
+		console.log(this);
+		lhide = hidesidebar('left', lhide);
+		console.log(lhide);
+		
 });
+
+$('#rightptr').click(function(){
+	$('#rightptr img').toggle();
+	if(!rhide){
+		$('#contentdiv').animate({'width' : $('#contentdiv').width()+$('#tocdiv').width(), 'right' : '0'}, 'fast');
+		rhide = true;
+		}else{	
+			$('#contentdiv').animate({'width' : $('#contentdiv').width()-$('#tocdiv').width(), 'right' : '16%'}, 'fast');
+			rhide = false;
+			} 			
+});
+
 </script>
 </body>
 </html>

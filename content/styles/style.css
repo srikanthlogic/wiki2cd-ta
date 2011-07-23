@@ -32,28 +32,35 @@ body{
 	left: 0px;
 	background-color: #FFF;	
 }
-#mode{
+#leftptr{
 	width: 5px;
 	position: absolute;
 	left: 0px;
 	bottom: 0px;
 	background-color: #ffe380;
 	z-index: 999;
-	}
-
+	cursor: pointer;
+}
+#rightptr{
+	width: 5px;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	background-color: #ffe380;
+	z-index: 999;
+	cursor: pointer;
+}
 #contentdiv{
-	width: 65.9%;
+	width: 68%;
 	float: left;
 	position: absolute;
 	bottom: 0px;
 	left: 16%;
 	background-color: #FFF;
-	border-left: 1px solid #CCC;
-	border-right: 1px solid #CCC;
 	z-index: 900;
 }
 #extradiv{
-	width: 18%;
+	width: 16%;
 	float: left;;
 	position: absolute;
 	bottom: 0px;
@@ -63,6 +70,7 @@ body{
 iframe{
 	border: 0;
 	}
+
 #homebtn{
 	position: absolute;
 	left: 10px;
