@@ -8,7 +8,7 @@ $(document).ready(function(){
 	$('li:has(ul)').css({cursor:'pointer'}).children().filter(':not(span)').hide();
 	
 	$('li:has(ul) span').click( function(){
-		$(this).toggleClass('open').parent().children().filter(':not(span)').slideToggle();
+		$(this).filter(':not(.file)').toggleClass('open').parent().children().filter(':not(span)').slideToggle();
 		});
 	
 	$('span.file').parent().addClass('file');
