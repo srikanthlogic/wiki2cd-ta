@@ -187,8 +187,7 @@ def grab_page(wikibase, pagelink,outputfolder, pagenum):
                 outputfile= outputfile.strip().replace("/", "\/")
                 imagenamefixscript.write(("cp " +  path+"\/"+ imagefile + "  " +path  + outputfile+"\n"))
                 imagefile = imagefile.strip().replace("/", "\/")
-                imagenamefixscript.write("perl -e \"s/"+imagefile+"/"+outputfile+"/g\"  -pi "+ htmlname+"\n" )
-                 
+                imagenamefixscript.write("perl -e \"s/"+imagefile+"/"+outputfile+"/g\"  -pi "+ htmlname.replace("(","\(").replace(")","\)")+"\n" )                 
                 counter+=1
     except KeyboardInterrupt:
         sys.exit()
