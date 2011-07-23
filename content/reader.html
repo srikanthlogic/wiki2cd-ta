@@ -45,10 +45,10 @@ var rhide = false;
 $('#leftptr').click(function(){
 	$('#leftptr img').toggle();
 	if(!lhide){
-		$('#contentdiv').animate({'width' : $('#contentdiv').width()+$('#tocdiv').width(), 'left' : '0'}, 'fast');
+		$('#contentdiv').animate({'width' : $('#contentdiv').width()+$('#tocdiv').width(), 'left' : '0'});
 		lhide = true;
 		}else{	
-			$('#contentdiv').animate({'width' : $('#contentdiv').width()-$('#tocdiv').width(), 'left' : '16%'}, 'fast');
+			$('#contentdiv').animate({'width' : $('#contentdiv').width()-$('#tocdiv').width(), 'left' : '16%'});
 			lhide = false;
 			} 
 		console.log(this);
@@ -60,10 +60,10 @@ $('#leftptr').click(function(){
 $('#rightptr').click(function(){
 	$('#rightptr img').toggle();
 	if(!rhide){
-		$('#contentdiv').animate({'width' : $('#contentdiv').width()+$('#tocdiv').width(), 'right' : '0'}, 'fast');
+		$('#contentdiv').animate({'width' : $('#contentdiv').width()+$('#tocdiv').width(), 'right' : '0'});
 		rhide = true;
 		}else{	
-			$('#contentdiv').animate({'width' : $('#contentdiv').width()-$('#tocdiv').width(), 'right' : '16%'}, 'fast');
+			$('#contentdiv').animate({'width' : $('#contentdiv').width()-$('#tocdiv').width(), 'right' : '16%'});
 			rhide = false;
 			} 			
 });
