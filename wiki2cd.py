@@ -21,6 +21,7 @@ import codecs
 import urllib
 import urllib2
 import os,sys
+import hashlib
 from sgmllib import SGMLParser
 from pyquery import PyQuery as pq
 
@@ -175,20 +176,22 @@ def grab_page(wikibase, pagelink,outputfolder, pagenum):
         parser.close()
         f.write(page)
         f.close()
-        # TODO : find a way to detect long file names and solve the error
         for image in parser.images:
             if not image[0]=="/": #relative reference
                 grab_image(image,outputfolder)
                 extension=image.split(".")[-1]
                 link= image.strip()
                 link=link.replace("http://","")
-                #imagefile= urllib.unquote(link)
-                imagefile= link
-                outputfile =imageoutputfolder+"/"+str(pagenum)+"_"+str(counter) + "."+ extension
-                outputfile= outputfile.strip().replace("/", "\/")
-                imagenamefixscript.write(("cp " +  path+"\/"+ imagefile + "  " +path  + outputfile+"\n"))
-                imagefile = imagefile.strip().replace("/", "\/")
-                imagenamefixscript.write("perl -e \"s/"+imagefile+"/"+outputfile+"/g\"  -pi "+ htmlname.replace("(","\(").replace(")","\)")+"\n" )                 
+		filename=link.split("/")[-1]
+		m = hashlib.md5()
+		m.update(filename.encode("utf-8"))
+		md5filename= m.hexdigest()[0:7]
+		oldimagefile= link.strip().replace("/", "\/")
+                newimagefile= md5filename+"."+extension
+		output_filename = str(outputfolder + "/" + newimagefile)
+                imagenamefixscript.write(("mv " + path +  newimagefile + "  " +path  + imageoutputfolder +"/" + newimagefile+"\n"))
+		outputfilepath=str(imageoutputfolder +"/" + newimagefile).strip().replace("/", "\/")
+                imagenamefixscript.write("perl -e \"s/"+oldimagefile+"/"+ outputfilepath+"/g\"  -pi "+ htmlname.replace("(","\(").replace(")","\)")+"\n" )                 
                 counter+=1
     except KeyboardInterrupt:
         sys.exit()
@@ -205,8 +208,11 @@ def grab_image(imageurl, outputfolder):
         link= imageurl.strip()
         parts = link.split("/")
         filename = parts[len(parts)-1]
-        output_filename =str(outputfolder + "/" + link.replace("http://",""))
-        #output_filename=urllib.unquote(output_filename)
+	extension = imageurl.split(".")[-1]
+	m = hashlib.md5()
+	m.update(filename.encode("utf-8"))
+	md5filename= m.hexdigest()[0:7]
+	output_filename = str(outputfolder + "/" + md5filename + "." + extension)
         print("GET IMAGE " + link + " ==> " + output_filename)
         if os.path.isfile(output_filename):
             print("File " + output_filename + " already exists")
@@ -224,7 +230,7 @@ def grab_image(imageurl, outputfolder):
     except urllib2.HTTPError:
         print("Error: Cound not download the image")
         pass
-    
+
 def cleanup(page):
     """
     remove unwanted sections of the page.
