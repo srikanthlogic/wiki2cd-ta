@@ -151,8 +151,8 @@ def grab_page(wikibase, pagelink,outputfolder, pagenum):
     imagenamefixscript.write("mkdir " +path+ imageoutputfolder +"\n")
     try:
         link= pagelink.strip()
-        parts = link.split("/")    
-        filename = parts[len(parts)-1]     
+        parts = link.split("/")
+        filename = parts[len(parts)-1]
         print "GET " + link + " ==> " + outputfolder + "/"+ filename+  ".html"
         if os.path.isfile(outputfolder + "/"+ filename+  ".html"):
             print "File " + outputfolder + "/"+ filename+  ".html" + " already exists"
@@ -163,26 +163,27 @@ def grab_page(wikibase, pagelink,outputfolder, pagenum):
         opener.addheaders = [('User-agent', 'Mozilla/5.0')]
         infile = opener.open(link)
         page = infile.read()
-        parser = ImageLister()
-        parser.feed(page)        
-        parser.close()
         htmlname =outputfolder + "/"+ filename+  ".html"
         f= open(htmlname,'w')
         metacontent = metacontent.replace("$ONWIKI$",link)
         metacontent = metacontent.replace("$PAGE$",quotedfilename)
         page = page.replace("</body>",metacontent+"</body>")
-        # The next line is where the page cleanup happens. FIXME
+        # The next line is where the page cleanup happens.
         page = cleanup(page)
+        parser = ImageLister()
+        parser.feed(page)
+        parser.close()
         f.write(page)
         f.close()
-        for image in parser.images: 
-            if not image[0]=="/"    : #relative reference
+        # TODO : find a way to detect long file names and solve the error
+        for image in parser.images:
+            if not image[0]=="/": #relative reference
                 grab_image(image,outputfolder)
                 extension=image.split(".")[-1]
                 link= image.strip()
                 link=link.replace("http://","")
-                #imagefile= urllib.unquote(link) 
-                imagefile= link 
+                #imagefile= urllib.unquote(link)
+                imagefile= link
                 outputfile =imageoutputfolder+"/"+str(pagenum)+"_"+str(counter) + "."+ extension
                 outputfile= outputfile.strip().replace("/", "\/")
                 imagenamefixscript.write(("cp " +  path+"\/"+ imagefile + "  " +path  + outputfile+"\n"))
@@ -202,14 +203,14 @@ def grab_image(imageurl, outputfolder):
     """
     try:
         link= imageurl.strip()
-        parts = link.split("/")    
-        filename = parts[len(parts)-1]     
+        parts = link.split("/")
+        filename = parts[len(parts)-1]
         output_filename =str(outputfolder + "/" + link.replace("http://",""))
-        #output_filename=urllib.unquote(output_filename) 
+        #output_filename=urllib.unquote(output_filename)
         print("GET IMAGE " + link + " ==> " + output_filename)
         if os.path.isfile(output_filename):
             print("File " + output_filename + " already exists")
-            return 
+            return
         opener = urllib2.build_opener()
         opener.addheaders = [('User-agent', 'Mozilla/5.0')]
         infile = opener.open(link)
@@ -234,7 +235,7 @@ def cleanup(page):
     unwanted_sections_list="""
     .editsection,#mw-panel,script,#mw-head,.infobox,#toc,#jump-to-nav,.reference,
     .navbox,#footer,#catlinks,#mw-js-message,.magnify,#mainarticle,.printfooter,#siteSub,
-    #protected-icon,.dablink
+    #protected-icon,.dablink,.boilerplate
     """
     unwanted_divs = unwanted_sections_list.split(",")
     for section in unwanted_divs:

@@ -1,6 +1,6 @@
 #!/bin/bash
 #Change the following properties as per your requirement
-outputfolder="../Maths"
+outputfolder="../tawiki"
 baseurl="http://ta.wikipedia.org"
 topics="tatopicslist.txt"
 #The topics list is a plain text file with each line containing the title of the wiki article.
