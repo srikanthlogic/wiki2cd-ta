@@ -94,7 +94,7 @@ def maketoc(topicslist,outputfolder, toc_filename="/toc.html"):
         link = link.replace("(", "\(")
         link = link.replace(")", "\)")
         toc_cdfix_file.write("mv " + outputfolder + "/"+link+".html "+outputfolder+"/" + str(counter)+".html\n"  )
-        toc_cdfix_file.write("perl -e \"s/"+link+".html/"+str(counter)+".html/g\"  -pi "+outputfolder+"/toc.html\n"  )
+        toc_cdfix_file.write("perl -e \"s/'"+link+".html'/'"+str(counter)+".html'/g\"  -pi "+outputfolder+"/toc.html\n"  )
         counter+=1
     toc_file.write("</li>\n</ui>\n")    
     toc_file.write(toc_footer+"\n")
