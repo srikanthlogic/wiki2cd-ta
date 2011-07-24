@@ -90,8 +90,8 @@ def maketoc(topicslist,outputfolder, toc_filename="/toc.html"):
             atleaf = False    
             continue
         atleaf = True
-        link = text.strip().replace(" ", "_")
-        toc_file.write("<li><span class='file'><a href='"+link+".html' target='content'>"+text+"</a></span></li>\n")
+        link = text.split(',')[0].strip().replace(" ", "_")
+        toc_file.write("<li><span class='file'><a href='"+link+".html' target='content'>"+text.split(',')[0]+"</a></span></li>\n")
         link = link.replace("(", "\(")
         link = link.replace(")", "\)")
         toc_cdfix_file.write("mv " + outputfolder + "/"+link+".html "+outputfolder+"/" + str(counter)+".html\n"  )
@@ -127,8 +127,12 @@ def grab_pages(wikibase, topicslist,outputfolder):
                 continue #It is a comment    
             if text[0]== "=": 
                 continue
-            link = text.replace(" ", "_")
-            grab_page(wikibase, wikibase + "/wiki/"+link,outputfolder, counter)
+            articlename = text.split(',')[0].replace(" ", "_")
+	    if (len(text.split(',')) > 1):
+		revid = text.split(',')[1]
+		grab_page_rev(wikibase,articlename,outputfolder,counter,revid)
+	    else:
+		grab_page(wikibase, wikibase + "/wiki/"+articlename,outputfolder,counter)		    
             counter+=1
         except KeyboardInterrupt:
             return 
@@ -137,7 +141,6 @@ def grab_page(wikibase, pagelink,outputfolder, pagenum):
     """
     grab the page from wiki
     """
-    counter = 1000
     #Note: You might need to edit he below line for the bottom links- contributors, latest version in wiki etc.
     metacontent ="""
     <hr/>
@@ -167,6 +170,74 @@ def grab_page(wikibase, pagelink,outputfolder, pagenum):
         htmlname =outputfolder + "/"+ filename+  ".html"
         f= open(htmlname,'w')
         metacontent = metacontent.replace("$ONWIKI$",link)
+        metacontent = metacontent.replace("$PAGE$",quotedfilename)
+        page = page.replace("</body>",metacontent+"</body>")
+        # The next line is where the page cleanup happens.
+        page = cleanup(page)
+        parser = ImageLister()
+        parser.feed(page)
+        parser.close()
+        f.write(page)
+        f.close()
+        for image in parser.images:
+            if not image[0]=="/": #relative reference
+                grab_image(image,outputfolder)
+                extension=image.split(".")[-1]
+                link= image.strip()
+                link=link.replace("http://","")
+		filename=link.split("/")[-1]
+		m = hashlib.md5()
+		m.update(filename.encode("utf-8"))
+		md5filename= m.hexdigest()[0:7]
+		oldimagefile= link.strip().replace("/", "\/")
+                newimagefile= md5filename+"."+extension
+		output_filename = str(outputfolder + "/" + newimagefile)
+                imagenamefixscript.write(("mv " + path +  newimagefile + "  " +path  + imageoutputfolder +"/" + newimagefile+"\n"))
+		outputfilepath=str(imageoutputfolder +"/" + newimagefile).strip().replace("/", "\/")
+                imagenamefixscript.write("perl -e \"s/"+oldimagefile+"/"+ outputfilepath+"/g\"  -pi "+ htmlname.replace("(","\(").replace(")","\)")+"\n" )                 
+    except KeyboardInterrupt:
+        sys.exit()
+    except urllib2.HTTPError:
+        print("Error: Could not download the page")
+        pass
+    imagenamefixscript.close()
+
+
+
+def grab_page_rev(wikibase,articlename,outputfolder, pagenum,revid):
+    """
+    grab the page from wiki
+    """
+    counter = 1000
+    #Note: You might need to edit he below line for the bottom links- contributors, latest version in wiki etc.
+    metacontent ="""
+    <hr/>
+    <ul>
+    <li><a href="$LATESTONWIKI$" target="_blank" class="metalinks">விக்கிப்பீடியாவில் அண்மைய பதிப்பை படிக்க</a></li>
+    <li><a href="$ONWIKI$" target="_blank" class="metalinks">விக்கிப்பீடியாவில் இந்த பதிப்பை படிக்க</a></li>
+    <li><a href="http://toolserver.org/~daniel/WikiSense/Contributors.php?wikilang=ta&wikifam=.wikipedia.org&since=&until=&grouped=on&order=-edit_count&max=100&order=-edit_count&format=html&page=$PAGE$" target="_blank"  class="metalinks">பங்களிப்பாளர்கள்</a></li>
+    <ul>
+    """
+    path = outputfolder+"/"
+    imageoutputfolder = "wikiimages/"
+    imagenamefixscript = codecs.open("imagenamefix.sh", "a", "utf-8")
+    imagenamefixscript.write("mkdir " +path+ imageoutputfolder +"\n")
+    try:
+        print "GET " + wikibase + "/wiki/" + articlename + " ==> " + outputfolder + "/"+ articlename+  ".html"
+        if os.path.isfile(outputfolder + "/"+ articlename+  ".html"):
+            print "File " + outputfolder + "/"+ articlename+  ".html" + " already exists"
+            return
+        quotedfilename = urllib.quote(articlename.encode('utf-8')) 
+        latestpagelink = wikibase +"/wiki/"+quotedfilename
+	link = wikibase + "/w/index.php?title"+quotedfilename+"&oldid="+revid
+        opener = urllib2.build_opener()
+        opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+        infile = opener.open(link)
+        page = infile.read()
+        htmlname =outputfolder + "/"+ articlename+  ".html"
+        f= open(htmlname,'w')
+	metacontent = metacontent.replace("$ONWIKI",link.encode('utf-8'))
+        metacontent = metacontent.replace("$LATESTONWIKI$",latestpagelink)
         metacontent = metacontent.replace("$PAGE$",quotedfilename)
         page = page.replace("</body>",metacontent+"</body>")
         # The next line is where the page cleanup happens.
@@ -241,7 +312,7 @@ def cleanup(page):
     unwanted_sections_list="""
     .editsection,#mw-panel,script,#mw-head,.infobox,#toc,#jump-to-nav,.reference,
     .navbox,#footer,#catlinks,#mw-js-message,.magnify,#mainarticle,.printfooter,#siteSub,
-    #protected-icon,.dablink,.boilerplate
+    #protected-icon,.dablink,.boilerplate,#mw-revision-info,#mw-revision-nav
     """
     unwanted_divs = unwanted_sections_list.split(",")
     for section in unwanted_divs:
