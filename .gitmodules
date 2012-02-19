@@ -1,0 +1,3 @@
+[submodule "wp-featured-pics"]
+	path = wp-featured-pics
+	url = git@github.com:tecoholic/wp-featured-pics.git
