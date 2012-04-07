@@ -16,7 +16,7 @@ LANG=en_US.UTF8  python wiki2cd.py $baseurl  $topics $outputfolder/content
 echo "Fixing the links"
 mv $outputfolder/content/bits.wikimedia.org $outputfolder/content/bits
 perl -e "s/http:\/\/upload.wikimedia.org/upload.wikimedia.org/g"  -pi $outputfolder/content/*.html
-perl -e "s/http:\/\/bits.wikimedia.org/bits/g" -pi  $outputfolder/content/*.html
+#perl -e "s/http:\/\/bits.wikimedia.org/bits/g" -pi  $outputfolder/content/*.html
 perl -e "s/href=\"\//href=\"http:\/\/ta.wikipedia.org\//g" -pi $outputfolder/content/*.html
 #The following section of the code is required for making the content suitable for ISO9660 file system
 #The CD/DVD file system has lots of limitation on filenames and directory depth.
