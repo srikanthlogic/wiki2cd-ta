@@ -25,7 +25,7 @@ body{
 	padding-bottom: 10px;
 	}
 #tocdiv{
-	width: 16%;
+	width: 20%;
 	float: left;
 	position: absolute;
 	bottom: 0px;
@@ -41,31 +41,14 @@ body{
 	z-index: 999;
 	cursor: pointer;
 }
-#rightptr{
-	width: 5px;
-	position: absolute;
-	right: 0px;
-	bottom: 0px;
-	background-color: #ffe380;
-	z-index: 999;
-	cursor: pointer;
-}
 #contentdiv{
-	width: 68%;
+	width: 80%;
 	float: left;
 	position: absolute;
 	bottom: 0px;
-	left: 16%;
+	left: 20%;
 	background-color: #FFF;
 	z-index: 900;
-}
-#extradiv{
-	width: 16%;
-	float: left;;
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	background-color: #FFF;
 }
 iframe{
 	border: 0;

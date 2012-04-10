@@ -17,9 +17,6 @@ h1, h2, h3, h4{
 	text-align: center;
 	font-size: 140%;	
 	}
-h1 span{
-	font-size: 150%;
-	}
 #text button{
 	
 	}
@@ -27,7 +24,15 @@ h1 span{
 	padding: 20px 0px 10px 0px;
 	}
 #footer{
-	padding: 10px 0px 20px 0px;
+	margin-top: 10px;
+	position: absolute;
+	bottom: 0px;
+	text-align: center;
+	width: 100%;
+	left: 0;
+	}
+#footer p{
+	font-size: 80%;
 	}
 	
 ul{
@@ -38,8 +43,8 @@ ul{
 	}
 #circle a{
 	text-decoration: none;
-	font-size: 80%;
-	color: #002797;
+	font-size: 100%;
+	color: #222222;
 	}
 #circle a:hover{
 	color: #ff0000;
@@ -47,27 +52,42 @@ ul{
 .spin{
 	position: absolute;
 	}
+.spin img{
+	width: 50%;
+	height: 50%;
+}
+
 .disc-1{
-	top: 40%;
-	left: 20%;
+	top: 65%;
+	left: 23%;
 	}
 .disc-2{
-	top: 12%;
-	left: 22%;
+	top: 38%;
+	left: 20%;
 	}
 .disc-3{
-	top: 12%;
-	left: 60%;
+	top: 10%;
+	left: 25%;
 	}
 .disc-4{
-	top: 40%;
+	top: 10%;
 	left: 65%;
 	}
+.disc-5{
+	top: 38%;
+	left: 70%;
+}
+.disc-6{
+	top: 65%;
+	left: 67%;
+}
 button#read{
-	width: 20%;
-	height: 40px;
+	width: 25%;
+	height: 35px;
 	border: 1px solid #ccc;
 	background-color: #ffd545;
-	font-size: 110%;
 	cursor: pointer;
-	}
+	position: absolute;
+	left: 37.5%;
+	bottom: 8%;
+}
