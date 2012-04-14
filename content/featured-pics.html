@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Featured Pics</title>
+    <script type="text/javascript" src="scripts/descriptions.js"></script>
     <script type="text/javascript" src="scripts/jquery-1.6.1.min.js"></script>
+    <link rel="stylesheet" href="styles/picviewer.css" />
 </head>
 <body>
     <!-- content here -->
+
+    <div id="container">
+        <div id="top">
+            <div id="home">
+                <button id="homebtn" onclick="window.location = '../index.html';">
+                <img src="images/home.png" alt="முகப்பு" ><span>முகப்பு</span></button>
+            </div>
+        </div>
+        <div id="viewer">
+        </div>
+    	<div id="desc"></div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready( function(){
+                // code for updating the gallery here...
+                });// final closing
+    </script>
 </body>
 </html>
