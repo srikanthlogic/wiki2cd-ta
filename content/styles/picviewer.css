@@ -3,6 +3,22 @@
     margin: 0 auto;
 }
 #top{
-    height: 20px;
+    height: 30px;
 }
 
+#viewer{
+    width: 69%;
+    border: 1px solid #666;
+    float: left;
+    text-align: center;
+    margin-right: 0.5%;
+}
+#viewer img{
+  max-width: 100%;
+  max-height: 100%;
+}
+#desc{
+    width: 29%;
+    float: left;
+    margin: 0;
+}
