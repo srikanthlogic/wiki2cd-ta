@@ -19,12 +19,38 @@
         </div>
         <div id="viewer">
         </div>
-    	<div id="desc"></div>
+        <button id="pre_btn">Previous</button>
+        <button id="next_btn">Next</button>
+      <div id="desc"></div>
     </div>
     <script type="text/javascript">
-        $(document).ready( function(){
-                // code for updating the gallery here...
-                });// final closing
+        $(document).ready(function(){
+                    // Load the first image
+                    $("#viewer").append($("<p>", { text: descriptions[0].fileno}));
+                    $("#desc").append(descriptions[0].content);
+                    var count = 0;
+
+                    // Previous Button
+                    $("#pre_btn").click(function(){
+                            count -= 1;
+                            if( count < 0 ){
+                                count = 0;
+                                }
+                            $("#viewer").empty().append($("<p>", { text: descriptions[count].fileno}));
+                            $("#desc").empty().append(descriptions[count].content);
+                            });
+
+                    // Next Button
+                    $("#next_btn").click(function(){
+                            count += 1;
+                            if( count > 100 ){
+                                count = 0;
+                                }
+                            $("#viewer").empty().append($("<p>", { text: descriptions[count].fileno}));
+                            $("#desc").empty().append(descriptions[count].content);
+                            });
+
+                });
     </script>
 </body>
 </html>
