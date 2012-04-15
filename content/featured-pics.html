@@ -17,19 +17,20 @@
             </div>
         </div>
         <div id="viewer">
+            <span></span>
             <img id="fimage" src="" alt="Image Gallery"/>
         </div>
         <div id="desc">
             <div id="buttons">
-                <div id="pre_btn" class="navi">Previous</div>
-                <div id="next_btn" class="navi" >Next</div>
+                <div id="pre_btn" class="navi">முந்தைய படம்</div>
+                <div id="next_btn" class="navi" >அடுத்த படம்</div>
             </div>
             <div id="snippet"></div>
         </div>
     </div>
     <script type="text/javascript">
-        $("#viewer").height($(window).height() - 55 );
-        $("#desc").css({ "min-height" : $(window).height() - 55 });
+        $("#viewer").height($(window).height() - 58 );
+        $("#snippet").css({ "min-height" : $(window).height() - 110 });
         function loadImageAt( position ){
             $("#viewer img").fadeOut('slow', function(){
                     // TODO The following line has to change according to the descriptions.js file

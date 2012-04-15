@@ -3,7 +3,7 @@
     padding: 0;
 }
 body{
-    background-color: #ccc;
+    background-color: #888;
 }
 #bannerdiv{
     width: 100%;
@@ -46,18 +46,29 @@ body{
     text-align: center;
     margin-top: 52px;
     position: relative;
+    display: table-cell;
+    vertical-align: middle;
 }
 #viewer img{
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 95%;
+  max-height: 96%;
+  display: inline-block;
+  border: 10px solid #FFF;
+}
+#viewer span{
+    display: inline-block;
+    height: 100%;
+    width: 0px;
+}
+#viewer *{
+    vertical-align: middle;
 }
 #desc{
-    width: 29%;
+    width: 30%;
     float: left;
     margin: 0;
     margin-top: 52px;
     margin-left: 5px;
-    background-color: #FFF;
 }
 
 #buttons{
@@ -69,10 +80,11 @@ body{
     cursor: pointer;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: #FFF;
+    background-color: #fff;
 }
 .navi:hover {
     border: 1px solid #222;
+    background-color: #eee;
 }
 #pre_btn{
     float: left;
@@ -87,4 +99,9 @@ a{
 }
 #snippet{
     padding: 10px 5px 10px 10px;
+    border: 1px solid #444;
+    border-radius: 10px 10px;
+    -moz-border-radius: 10px 10px;
+    border-top: 2px solid #888;
+    background-color: #FFF;
 }
