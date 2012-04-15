@@ -37,7 +37,7 @@ body{
 	position: absolute;
 	left: 0px;
 	bottom: 0px;
-	background-color: #ffe380;
+	background-color: #666;
 	z-index: 999;
 	cursor: pointer;
 }

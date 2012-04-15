@@ -8,31 +8,39 @@
     <link rel="stylesheet" href="styles/picviewer.css" />
 </head>
 <body>
-    <!-- content here -->
-
     <div id="container">
-        <div id="top">
+        <div id="bannerdiv" class="trace">
+        <h1>விக்கிப்பீடியா சிறப்பு படங்கள்</h1>
             <div id="home">
                 <button id="homebtn" onclick="window.location = '../index.html';">
                 <img src="images/home.png" alt="முகப்பு" ><span>முகப்பு</span></button>
             </div>
         </div>
         <div id="viewer">
+            <img id="fimage" src="" alt="Image Gallery"/>
         </div>
         <div id="desc">
-            <button id="pre_btn">Previous</button>
-            <button id="next_btn">Next</button>
+            <div id="buttons">
+                <div id="pre_btn" class="navi">Previous</div>
+                <div id="next_btn" class="navi" >Next</div>
+            </div>
             <div id="snippet"></div>
         </div>
     </div>
     <script type="text/javascript">
+        $("#viewer").height($(window).height() - 55 );
+        $("#desc").css({ "min-height" : $(window).height() - 55 });
         function loadImageAt( position ){
-            $("#viewer").empty().append($("<img>", { src: "featured/"+descriptions[position].fileno+".png"}));
-            $("#snippet").empty().append(descriptions[position].content);
+            $("#viewer img").fadeOut('slow', function(){
+                    // TODO The following line has to change according to the descriptions.js file
+                    $(this).attr("src", "featured/"+descriptions[position].fileno+".png").fadeIn('slow');
+                    });
+            $("#snippet").empty().append(descriptions[position].content).find("a").attr("href", "#");
         }
         var count = 0;
         // Initialize
         loadImageAt( count )
+        // TODO Update the Picture counts
         // Previous Button
         $("#pre_btn").click(function(){
             count -= 1;

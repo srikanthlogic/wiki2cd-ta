@@ -1,17 +1,51 @@
-#container{
-    width: 800px;
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #ccc;
+}
+#bannerdiv{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: center;
+    background-image: url('../images/header.png');
+    background-repeat: repeat-x;
+}
+#bannerdiv h1{
     margin: 0 auto;
+    text-shadow: 2px 2px 1px #FFF;
+    font-size: 20px;
+    color: #333;
+    background-image: url('../images/Wikipedia-logo-48.png');
+    background-repeat: no-repeat;
+    background-position: 20% 0%;
+    padding-top: 15px;
+    padding-bottom: 10px;
 }
-#top{
-    height: 30px;
+#homebtn{
+    position: absolute;
+    left: 10px;
+    top: 10px;
 }
-
+#homebtn span{
+    font-size: 16px;
+    margin-left: 3px;
+    }
+#homebtn img{
+    float: left;	
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
 #viewer{
     width: 69%;
-    border: 1px solid #666;
+    max-width: 69%;
     float: left;
     text-align: center;
-    margin-right: 0.5%;
+    margin-top: 52px;
+    position: relative;
 }
 #viewer img{
   max-width: 100%;
@@ -21,4 +55,36 @@
     width: 29%;
     float: left;
     margin: 0;
+    margin-top: 52px;
+    margin-left: 5px;
+    background-color: #FFF;
+}
+
+#buttons{
+    position: relative;
+}
+.navi{
+    border: 1px solid #999;
+    text-align: center;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #FFF;
+}
+.navi:hover {
+    border: 1px solid #222;
+}
+#pre_btn{
+    float: left;
+    width: 50%;
+}
+#next_btn{
+    margin-left: 51%;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+#snippet{
+    padding: 10px 5px 10px 10px;
 }

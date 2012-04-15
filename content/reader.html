@@ -26,9 +26,7 @@
 	<iframe name="content" src="content.html" width="99%" height="100%" style="margin-left: 5px"></iframe>
 </div>
 <script type="text/javascript" >
-$('#contentdiv').height($(window).height() - 51);
-$('#tocdiv').height($(window).height() - 51);
-$('#extradiv').height($(window).height() - 51);
+$('#contentdiv,#tocdiv').height($(window).height() - 51);
 
 $('#leftptr').height($('#contentdiv').height());
 $('#leftptr img').css("margin-top",$('#contentdiv').height()/2);
