@@ -5,7 +5,9 @@
     <title>Featured Pics</title>
     <script type="text/javascript" src="scripts/descriptions.js"></script>
     <script type="text/javascript" src="scripts/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-ui-1.8.18.custom.min.js"></script>
     <link rel="stylesheet" href="styles/picviewer.css" />
+    <link rel="stylesheet" href="styles/sunny/jquery-ui-1.8.18.custom.css" />
 </head>
 <body>
     <div id="container">
@@ -22,15 +24,18 @@
         </div>
         <div id="desc">
             <div id="buttons">
-                <div id="pre_btn" class="navi">முந்தைய படம்</div>
-                <div id="next_btn" class="navi" >அடுத்த படம்</div>
+                <div id="pre_btn" class="ui-state-default ui-corner-all navi"><span class="ui-icon ui-icon-arrowthick-1-w" style="float: left; margin-left: 5%;"></span>முந்தைய படம்</div>
+                <div id="next_btn" class="ui-state-default ui-corner-all navi">அடுத்த படம்<span class="ui-icon ui-icon-arrowthick-1-e" style="float: right; margin-right: 5%;"></span>
+                </div>
             </div>
-            <div id="snippet"></div>
+            <div class="ui-widget ui-corner-all ui-widget-content" style="padding: 10px;">
+            	<div id="snippet" class="ui-dialog-content ui-widget-content" style="border: 0; background: none;"></div>
+            </div>
         </div>
     </div>
     <script type="text/javascript">
         $("#viewer").height($(window).height() - 58 );
-        $("#snippet").css({ "min-height" : $(window).height() - 110 });
+        $("#snippet").css({ "min-height" : $(window).height() - 120 });
         function loadImageAt( position ){
             $("#viewer img").fadeOut('slow', function(){
                     // TODO The following line has to change according to the descriptions.js file
@@ -59,6 +64,12 @@
             }
             loadImageAt( count );
         });
+        
+        //Hover effect
+        $("#next_btn,#pre_btn").hover( 
+        	function(){ $(this).addClass("ui-state-hover"); }, 
+        	function(){ $(this).removeClass("ui-state-hover"); });
+        	
     </script>
 </body>
 </html>

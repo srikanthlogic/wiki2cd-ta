@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
 }
+p{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 body{
     background-color: #888;
 }
@@ -75,16 +79,9 @@ body{
     position: relative;
 }
 .navi{
-    border: 1px solid #999;
-    text-align: center;
-    cursor: pointer;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: #fff;
-}
-.navi:hover {
-    border: 1px solid #222;
-    background-color: #eee;
+	padding: 10px 0px 10px 0px;
+	text-align: center;
+	cursor: pointer;
 }
 #pre_btn{
     float: left;
@@ -96,12 +93,4 @@ body{
 a{
     text-decoration: none;
     color: #000;
-}
-#snippet{
-    padding: 10px 5px 10px 10px;
-    border: 1px solid #444;
-    border-radius: 10px 10px;
-    -moz-border-radius: 10px 10px;
-    border-top: 2px solid #888;
-    background-color: #FFF;
 }
